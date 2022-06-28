@@ -11,9 +11,7 @@ app.use(express.urlencoded())
 
 
 app.post('/repos', async function (req, res) {
-  let repos = await getReposByUsername(req.body.term)
-  saveToDb(repos.data)
-  res.end('wow this worked')
+  let repos = await getReposByUsername(req.body.term).catch(function(err){console.log(err)})
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database

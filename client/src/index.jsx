@@ -43,6 +43,7 @@ class App extends React.Component {
         data: {
           term: term
         },
+        error: console.log('Not a username!'),
         success: function (result) {
           console.log('Successfully Posted!')
           $.ajax({
@@ -51,10 +52,11 @@ class App extends React.Component {
             success: function(result) {
               console.log('Retrieved Repos!')
               appInstance.setState({repos: JSON.parse(result)})
-            }
+            },
+            error: console.log('Not a username!')
           })
         }
-      });
+      })
     }
   }
 

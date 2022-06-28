@@ -14,7 +14,6 @@ let getReposByUsername = async (username) => {
   };
 
   let userData = await axios(options)
-
   // The options object has been provided to help you out,
   // but you'll have to fill in the URL
   // console.log(userData)
