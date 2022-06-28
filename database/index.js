@@ -41,3 +41,4 @@ let save = (repoArr) => {
 }
 
 module.exports.save = save;
+module.exports.Repo = Repo;
