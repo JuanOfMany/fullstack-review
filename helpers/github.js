@@ -17,8 +17,8 @@ let getReposByUsername = async (username) => {
 
   // The options object has been provided to help you out,
   // but you'll have to fill in the URL
-
-console.log(userData); //THIS WORKS
+  // console.log(userData)
+  return userData;
 }
 
 
