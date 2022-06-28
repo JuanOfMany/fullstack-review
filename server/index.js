@@ -1,5 +1,7 @@
 const express = require('express');
 let app = express();
+const getReposByUsername = require('../helpers/github.js').getReposByUsername
+const saveToDb = require('../database/index.js').save
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json())
@@ -7,9 +9,10 @@ app.use(express.urlencoded())
 
 
 
-app.post('/repos', function (req, res) {
-  console.log(req.body.term)
-  // TODO - your code here!
+app.post('/repos', async function (req, res) {
+  let repos = await getReposByUsername(req.body.term)
+  saveToDb(repos.data)
+
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
