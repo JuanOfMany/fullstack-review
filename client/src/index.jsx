@@ -10,20 +10,29 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
-
+    this.search = this.search.bind(this);
   }
 
   search (term) {
+    let appInstance = this;
     console.log(`${term} was searched`);
-
     $.ajax({
       url: '/repos',
       type: 'POST',
       data: {
         term: term
       },
-      success: function(result) {
-        console.log('wow this worked!')
+      success: function (result) {
+        console.log('Successfully Posted!')
+        $.ajax({
+          url: '/repos',
+          type: 'GET',
+          success: function(result) {
+            console.log('Retrieved Repos!')
+            appInstance.setState({repos: JSON.parse(result)})
+          }
+        })
+
       }
     });
   }

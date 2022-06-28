@@ -30,7 +30,6 @@ let save = (repoArr) => {
     formattedRepoObj.description = repo.description
     formattedRepoArr.push(formattedRepoObj)
   })
-  console.log(formattedRepoArr)
   // console.log(formattedRepoArr)
   Repo.insertMany(formattedRepoArr, function(err){
     console.error(err);

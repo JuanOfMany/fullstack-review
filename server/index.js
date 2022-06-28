@@ -13,7 +13,7 @@ app.use(express.urlencoded())
 app.post('/repos', async function (req, res) {
   let repos = await getReposByUsername(req.body.term)
   saveToDb(repos.data)
-  res.end('Successfully posted!')
+  res.end('wow this worked')
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
@@ -30,4 +30,3 @@ let port = 1128;
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
-
